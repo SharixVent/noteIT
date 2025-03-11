@@ -1,9 +1,11 @@
-### Wymagania wstępne
+# Instrukcja konfiguracji i uruchomienia backendu
+
+## Wymagania wstępne
 
 1. Zainstaluj [Python](https://www.python.org/downloads/) (wersja 3.6 lub nowsza).
 2. Zainstaluj [pip](https://pip.pypa.io/en/stable/installation/).
 
-### Konfiguracja środowiska
+## Konfiguracja środowiska
 
 1. Sklonuj repozytorium:
     ```sh
@@ -30,7 +32,7 @@
     pip install -r requirements.txt
     ```
 
-### Uruchomienie aplikacji Flask
+## Uruchomienie aplikacji Flask
 
 1. Upewnij się, że wirtualne środowisko jest aktywowane.
 2. Uruchom aplikację:
@@ -40,39 +42,8 @@
 
 3. Aplikacja będzie dostępna pod adresem: `http://127.0.0.1:5000/`
 
-### Pliki
+## Pliki
 
 - `.gitignore`: Plik konfiguracyjny Git ignorujący katalog `venv`.
 - `requirements.txt`: Lista wymaganych pakietów Python.
 - `routes.py`: Główny plik aplikacji Flask.
-
-## Frontend
-
-### Wymagania wstępne
-
-1. Zainstaluj [Node.js](https://nodejs.org/) (wersja 14 lub nowsza).
-
-### Konfiguracja środowiska
-
-1. Przejdź do katalogu frontend:
-    ```sh
-    cd ../frontend
-    ```
-
-2. Zainstaluj wymagane pakiety:
-    ```sh
-    npm install
-    ```
-
-### Uruchomienie aplikacji React
-
-1. Uruchom aplikację:
-    ```sh
-    npm start
-    ```
-
-2. Aplikacja będzie dostępna pod adresem: `http://localhost:3000/`
-
-### Pliki
-
-- `package.json`: Lista wymaganych pakietów Node.js dla aplikacji React.
