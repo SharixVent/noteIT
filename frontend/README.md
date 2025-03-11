@@ -20,7 +20,7 @@
 
 1. Uruchom aplikację:
     ```sh
-    npm start
+    npm run dev
     ```
 
 2. Aplikacja będzie dostępna pod adresem: `http://localhost:3000/`
