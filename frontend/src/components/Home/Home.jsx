@@ -1,21 +1,22 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faNoteSticky, faSquareUpRight, faUser, faCaretDown } from '@fortawesome/free-solid-svg-icons'
-import "./styles/Home.css"
+import "./Home.css"
 
 
 function Home() {
-    const [count, setCount] = useState(0)
-  
+    const navigate = useNavigate();
+
     return (
       <>
         <nav>
-            <button className='animated'>Register<FontAwesomeIcon icon={faSquareUpRight} /></button>
+            <button className='animated' onClick={() => navigate('/register')}>Register<FontAwesomeIcon icon={faSquareUpRight} /></button>
             <div className="logo">
                 <FontAwesomeIcon className='ikona' icon={faNoteSticky} /> 
                 <p>noteIT</p>
             </div>
-            <button className='animated'><FontAwesomeIcon icon={faUser} />Login</button>          
+            <button className='animated' onClick={() => navigate('/login')}><FontAwesomeIcon icon={faUser} />Login</button>          
         </nav>
 
         <main>
