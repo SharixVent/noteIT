@@ -11,9 +11,9 @@
     cursor: url("./cursor.png"), auto;
 }
 
-/* ================  nav  ================ */
+/* ================  .navbar-home  ================ */
 
-nav {
+.navbar-home {
     width: 100%;
     height: 15vh;
     display: flex;
@@ -21,7 +21,7 @@ nav {
     align-items: center;
 }
 
-nav .logo {
+.navbar-home .logo-land-page {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,7 +32,7 @@ nav .logo {
 }
 
 
-nav button {
+.navbar-home button {
     color: #fe7f2d;
     display: flex;
     place-items: center;
@@ -50,16 +50,16 @@ nav button {
 }
 
 
-nav button:hover {
+.navbar-home button:hover {
     background-color: #4F7A8F;
     letter-spacing: 2.5px;
     border-radius: 12px;
     cursor: url("./cursor.png"), auto;
 }
 
-/* ================  main  ================ */
+/* ================  .land-page  ================ */
 
-main {
+.land-page {
     position: relative;
     width: 100%;
     display: flex;
@@ -69,7 +69,7 @@ main {
 
 }
 
-main .container {
+.land-page .container-land-page {
     width: 70%;
     border-radius: 30px;
     height: 80vh;
@@ -79,7 +79,7 @@ main .container {
     overflow: hidden;
 }
 
-main .container .note {
+.land-page .container-land-page .note-land-page {
     position: relative;
     z-index: 15;
     width: 200px;
@@ -90,7 +90,7 @@ main .container .note {
     color: #000000;
 }
 
-main .container .note > p {
+.land-page .container-land-page .note-land-page > p {
     align-content: center;
     line-height: 1.5;
     font-size: 25px;
@@ -101,7 +101,7 @@ main .container .note > p {
     font-weight: 300;
 }
 
-main .container .note::after {
+.land-page .container-land-page .note-land-page::after {
     content:"";
     width: 40px;
     height: 45px;
@@ -113,7 +113,7 @@ main .container .note::after {
     box-shadow: 8px 5px 10px black;
 }
 
-main .container .shadow-left {
+.land-page .container-land-page .land-shadow-left {
     position: absolute;
     z-index: 5;
     top: 45px;
@@ -124,12 +124,12 @@ main .container .shadow-left {
     box-shadow: 10px 5px 10px black;
 }
 
-main .container .note-left {
+.land-page .container-land-page .land-note-left {
     transform: rotate(11deg);
     margin: 30px 0 0 0px;
 }
 
-main .container .note-left-down {
+.land-page .container-land-page .land-note-left-down {
     position: absolute;
     transform: rotate(7deg);
     top: 70px;
@@ -137,7 +137,7 @@ main .container .note-left-down {
     z-index: 3;
 }
 
-main .container .shadow-down  {
+.land-page .container-land-page .land-shadow-down  {
     position: absolute;
     z-index: 1;
     top: 115px;
@@ -148,12 +148,12 @@ main .container .shadow-down  {
     box-shadow: 10px 5px 10px black;
 }
 
-main .container .note-right {
+.land-page .container-land-page .land-note-right {
     transform: rotate(-11deg);
     margin-left: auto;
 }
 
-main .container .shadow-right {
+.land-page .container-land-page .land-shadow-right {
     position: absolute;
     z-index: 5;
     top: 275px;
@@ -164,7 +164,7 @@ main .container .shadow-right {
     box-shadow: 10px 5px 10px black;
 }
 
-main .container  > p {
+.land-page .container-land-page  > p {
     align-content: center;
     position: absolute;
     top: 10%;
@@ -198,7 +198,7 @@ main .container  > p {
     
 }
 
-main .container .categories {
+.land-page .container-land-page .categories-land-page {
     width: 350px;
     height: 350px;
     background-color: #3A5C6F;
@@ -216,20 +216,21 @@ main .container .categories {
 
 }
 
-main .container .categories > span {
+.land-page .container-land-page .categories-land-page > span {
     color: aliceblue;
-    font-size: 20px
+    font-size: 20px;
+    user-select: none;
 }
 
-main .container .categories > span .icon-cat {
+.land-page .container-land-page .categories-land-page > span .icon-cat {
     margin-right: 10px;
 }
 
-main .container .categories > span:not(:nth-child(1)) {
+.land-page .container-land-page .categories-land-page > span:not(:nth-child(1)) {
     margin-left: 20px;
 }
 
-main .container .categories > span:nth-child(1) {
+.land-page .container-land-page .categories-land-page > span:nth-child(1) {
     font-size: 40px;
     align-self: center;
 }

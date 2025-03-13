@@ -10,40 +10,40 @@ function Home() {
 
     return (
       <>
-        <nav>
-            <button className='animated' onClick={() => navigate('/register')}>Register<FontAwesomeIcon icon={faSquareUpRight} /></button>
-            <div className="logo">
-                <FontAwesomeIcon className='ikona' icon={faNoteSticky} /> 
+        <div className='navbar-home'>
+            <button className='animated-button-land' onClick={() => navigate('/register')}>Register<FontAwesomeIcon icon={faSquareUpRight} /></button>
+            <div className="logo-land-page">
+                <FontAwesomeIcon className='ikona-land' icon={faNoteSticky} /> 
                 <p>noteIT</p>
             </div>
-            <button className='animated' onClick={() => navigate('/login')}><FontAwesomeIcon icon={faUser} />Login</button>          
-        </nav>
+            <button className='animated-button-land' onClick={() => navigate('/login')}><FontAwesomeIcon icon={faUser} />Login</button>          
+        </div>
 
-        <main>
-            <div className="container">
-                <div className="note note-left">
+        <div className='land-page'>
+            <div className="container-land-page">
+                <div className="note-land-page land-note-left">
                     <p>Write, save, go—effortlessly!</p>
                 </div>
-                <div className="shadow-left note-left"></div>
+                <div className="land-shadow-left land-note-left"></div>
 
-                <div className="note note-left-down"></div>
-                <div className="shadow-down note-left-down"></div>
+                <div className="note-land-page land-note-left-down"></div>
+                <div className="land-shadow-down land-note-left-down"></div>
 
                 <p>Your Thoughts, Your Way – Perfectly Organized.</p>
 
-                <div className="note note-right">
+                <div className="note-land-page land-note-right">
                     <p>Never miss a moment, note it now!</p>
                 </div>
-                <div className="shadow-right note-right"></div>
+                <div className="land-shadow-right land-note-right"></div>
 
-                <div className="categories">
+                <div className="categories-land-page">
                     <span>Categories</span>
-                    <span><FontAwesomeIcon className='icon-cat' icon={faCaretDown} />Studies</span>
-                    <span><FontAwesomeIcon className='icon-cat' icon={faCaretDown} />Work</span>
+                    <span><FontAwesomeIcon className='icon-cat-page' icon={faCaretDown} />Studies</span>
+                    <span><FontAwesomeIcon className='icon-cat-page' icon={faCaretDown} />Work</span>
                 </div>
 
             </div>
-        </main>
+        </div>
       </>
     )
   }
