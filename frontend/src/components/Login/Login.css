@@ -1,0 +1,242 @@
+:root {
+    color: #f4f1de;
+    background-color: #233d4d;
+    max-width: 100%;
+    max-height: 100%;
+    font-family:  "Ubuntu", sans-serif;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.login-main {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+
+.login-main .login-cork-board {
+    position: relative;
+    width: 60vw;
+    height: 70vh;
+    border: 10px ridge #5d3200; 
+    
+    background: url("./cork.jpg");
+    margin-left: 5vw;
+    border-radius: 15px;
+}
+
+.login-main .login-left-book {
+    position: absolute;
+    top: -4vh;
+    left: -6.5vw;
+    width: 30vw;
+    height: 70vh;
+
+    perspective: 450px;
+}
+
+.login-main .login-cork-board .book {
+    position: relative;
+    width: 10vw;
+    border-radius: 20px;
+    height: 78vh;
+    background-color:#c58030;
+    transform: rotateY(40deg);
+    border: 3px solid black;
+    box-shadow: -8px 2px 1px #a46a28;
+}
+
+.login-main .login-cork-board .book::before {
+    position: absolute;
+    content: "";
+    background: url("./ksiazka.jpg");
+    background-repeat: no-repeat;
+    background-size: 6vw 72.5vh;
+    color: black;
+    top: 2.4vh;
+    left: 1vw;
+    width: 5.5vw;
+    height: 72.5vh;
+    border-radius: 20px 0 0 20px;
+    background-color:#ffffff;
+}
+
+
+
+.login-main .login-container {
+    width: 32.5vw;
+    height: calc(70vh + 20px);
+    background-color: white;
+    position: absolute;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border: 5px solid black;
+    border-left: 1px solid black;
+    top: -10px;
+    left: 0;
+    border-radius: 10px 50px 50px 10px;
+    display: flex;
+    flex-direction: column;
+    color: #000000; /*temp  */
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.login-main .login-container::before {
+    width: 32vw;
+    height: 70vh;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: url("./ksiazka.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px 50px 50px 10px;
+    opacity: .15;
+}
+
+
+.login-main .note-login {
+    position: absolute;
+    top: 70px;
+    right: 70px;
+    z-index: 15;
+    width: 200px;
+    height: 200px;
+    background-color: aliceblue;
+    clip-path: polygon(0 0, 80% 0, 100% 20%, 100% 100%, 0 100%);
+    display: flex;
+    color: #000000;
+    transform: rotate(9deg) ;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+
+}
+
+
+.login-main .note-login::before {
+    content:"";
+    width: 40px;
+    height: 45px;
+    position: absolute;
+    top: -5px;
+    right: -2px;
+    background-color: rgb(245, 242, 242);
+    border: 1.5px solid black;
+    box-shadow: 8px 5px 10px black;
+    transform: rotateY(15deg);
+}
+
+.login-main .login-note-pin {
+    z-index: 5;
+    width: 30px;
+    height: 30px;
+    background-color: red;  
+    position: absolute;
+    top: 5px;
+    left: 40%;
+    outline: 2px solid rgb(201, 201, 201);
+    outline-offset: -2px;
+    border-radius: 50%;
+    transform: rotateX(-10deg) rotateY(25deg);
+}
+.login-main .login-note-pinleg {
+    z-index: 3;
+    width: 12px;
+    height: 5px;
+    background-color: rgb(215, 215, 215);  
+    position: absolute;
+    top: 25px;
+    left: 52%;
+    transform: translate(-50%, 50%);
+    transform: rotate(30deg);
+    box-shadow: 6.5px 1.5px 6px black;
+}
+
+
+.login-main .login-note-pin::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    opacity: 60%;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    border-radius: 50%;
+}
+
+
+
+.login-main .note-login > p {
+    align-content: center;
+    line-height: 1.5;
+    font-size: 24px;
+    letter-spacing: 1px;
+    text-align: center;
+    user-select: none;
+    margin: 5px;
+    font-weight: 300;
+}
+
+.login-main .note-login-shadow {
+    position: absolute;
+    z-index: 5;
+    top: 115px;
+    right: 75px;
+    height: 160px;
+    width: 190px;
+    background-color: #000000;
+    box-shadow: 10px 5px 10px black;
+    transform: rotate(9deg);
+}
+
+.login-main .login-container .login-form {
+    display: flex;
+    flex-direction: column;
+    z-index: 5;
+    align-items: start;
+    gap: 20px;
+}
+
+.login-main .login-container .login-form > input[type='text'] {
+    display: flex;
+    padding-left: 5px;  
+    font-size: 20px;
+    width: 15vw;
+    height: 3vh;
+}
+
+.login-main .login-container .login-form > input[type='submit']{
+    /* flex-direction: column; */
+}
+
+.login-main .login-container .login-form > label{
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    user-select: none;
+}
+
+.login-main .login-container .login-logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 15vw;
+    user-select: none;
+    font-size: 60px;
+    height: auto;
+    z-index: 5;
+}
+
