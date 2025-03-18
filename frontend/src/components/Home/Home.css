@@ -8,7 +8,6 @@
     margin: 0;
     padding: 0;
     max-width: 100%;
-    cursor: url("./cursor.png"), auto;
 }
 
 /* ================  .navbar-home  ================ */
@@ -54,7 +53,6 @@
     background-color: #4F7A8F;
     letter-spacing: 2.5px;
     border-radius: 12px;
-    cursor: url("./cursor.png"), auto;
 }
 
 /* ================  .land-page  ================ */

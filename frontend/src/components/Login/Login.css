@@ -19,40 +19,100 @@
     
 }
 
-.login-main .login-container {
-    width: 40vw;
-    height: 65vh;
-    background-color: white;
-    position: relative;
-    outline: 5px solid black;
-    outline-offset: -5px;
-    border-radius: 15px;
-    margin-left: 10vw;
-    display: flex;
-    color: #000000; /*temp  */
-    
-}
 
 .login-main .login-cork-board {
     position: relative;
-    width: 32vw;
-    height: 40vh;
-    border: 10px solid #5d3200;
-    background: url("./../styles/cork.jpg");
+    width: 60vw;
+    height: 70vh;
+    border: 10px ridge #5d3200; 
+    
+    background: url("./cork.jpg");
     margin-left: 5vw;
     border-radius: 15px;
-    transform: rotateZ(5deg);
 }
 
+.login-main .login-left-book {
+    position: absolute;
+    top: -4vh;
+    left: -6.5vw;
+    width: 30vw;
+    height: 70vh;
+
+    perspective: 450px;
+}
+
+.login-main .login-cork-board .book {
+    position: relative;
+    width: 10vw;
+    border-radius: 20px;
+    height: 78vh;
+    background-color:#c58030;
+    transform: rotateY(40deg);
+    border: 3px solid black;
+    box-shadow: -8px 2px 1px #a46a28;
+}
+
+.login-main .login-cork-board .book::before {
+    position: absolute;
+    content: "";
+    background: url("./ksiazka.jpg");
+    background-repeat: no-repeat;
+    background-size: 6vw 72.5vh;
+    color: black;
+    top: 2.4vh;
+    left: 1vw;
+    width: 5.5vw;
+    height: 72.5vh;
+    border-radius: 20px 0 0 20px;
+    background-color:#ffffff;
+}
+
+
+
+.login-main .login-container {
+    width: 32.5vw;
+    height: calc(70vh + 20px);
+    background-color: white;
+    position: absolute;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border: 5px solid black;
+    border-left: 1px solid black;
+    top: -10px;
+    left: 0;
+    border-radius: 10px 50px 50px 10px;
+    display: flex;
+    flex-direction: column;
+    color: #000000; /*temp  */
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.login-main .login-container::before {
+    width: 32vw;
+    height: 70vh;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: url("./ksiazka.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px 50px 50px 10px;
+    opacity: .15;
+}
 
 
 .login-main .note-login {
     position: absolute;
-    top: 50px;
-    right: 50px;
+    top: 70px;
+    right: 70px;
     z-index: 15;
-    width: clamp(100px, 12vw, 200px);
-    height: clamp(100px, 12vw, 200px);
+    width: 200px;
+    height: 200px;
     background-color: aliceblue;
     clip-path: polygon(0 0, 80% 0, 100% 20%, 100% 100%, 0 100%);
     display: flex;
@@ -60,14 +120,15 @@
     transform: rotate(9deg) ;
     justify-content: center;
     align-items: center;
+    user-select: none;
 
 }
 
 
 .login-main .note-login::before {
     content:"";
-    width: clamp(20px, 3vw, 40px);
-    height: clamp(25px, 3vw , 45px);
+    width: 40px;
+    height: 45px;
     position: absolute;
     top: -5px;
     right: -2px;
@@ -100,7 +161,7 @@
     left: 52%;
     transform: translate(-50%, 50%);
     transform: rotate(30deg);
-    box-shadow: 6px 1px 3px black;
+    box-shadow: 6.5px 1.5px 6px black;
 }
 
 
@@ -121,7 +182,7 @@
 .login-main .note-login > p {
     align-content: center;
     line-height: 1.5;
-    font-size: clamp(10px, 2vw, 25px);
+    font-size: 24px;
     letter-spacing: 1px;
     text-align: center;
     user-select: none;
@@ -132,8 +193,8 @@
 .login-main .note-login-shadow {
     position: absolute;
     z-index: 5;
-    top: 95px;
-    right: 55px;
+    top: 115px;
+    right: 75px;
     height: 160px;
     width: 190px;
     background-color: #000000;
@@ -141,21 +202,41 @@
     transform: rotate(9deg);
 }
 
-.login-main .login-container .login-form > input{
+.login-main .login-container .login-form {
     display: flex;
     flex-direction: column;
-    margin: 0 0 0 50px ;
-    gap: 50px;
+    z-index: 5;
+    align-items: start;
+    gap: 20px;
+}
+
+.login-main .login-container .login-form > input[type='text'] {
+    display: flex;
+    padding-left: 5px;  
+    font-size: 20px;
+    width: 15vw;
+    height: 3vh;
 }
 
 .login-main .login-container .login-form > input[type='submit']{
-    flex-direction: column;
-    margin: 20px 0 0 50px ;
+    /* flex-direction: column; */
 }
 
 .login-main .login-container .login-form > label{
     display: flex;
     flex-direction: column;
-    margin-top: 50px;
-    margin-left: 50px ;
+    font-size: 20px;
+    user-select: none;
 }
+
+.login-main .login-container .login-logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 15vw;
+    user-select: none;
+    font-size: 60px;
+    height: auto;
+    z-index: 5;
+}
+
