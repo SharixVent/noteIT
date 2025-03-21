@@ -20,10 +20,13 @@
 
 1. Uruchom aplikację:
     ```sh
-    npm start
+    npm run dev
     ```
 
-2. Aplikacja będzie dostępna pod adresem: `http://localhost:3000/`
+2. Aplikacja będzie dostępna pod adresem wygenerowanym przez program.
+   
+![image](https://github.com/user-attachments/assets/bf15f0f1-53b2-45f1-937b-a7d4c7bbf7c0)
+
 
 ### Pliki
 
