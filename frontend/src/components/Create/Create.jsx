@@ -22,8 +22,8 @@ function Create() {
 
     return (
         <div className="create-container">
-            <div className="navbar">
-                    <div className="logo-land-page">
+            <div className="navbar-create">
+                    <div className="logo-land-page-create">
                         <FontAwesomeIcon className='ikona-land' icon={faNoteSticky} /> 
                         <p>noteIT</p>
                     </div>
