@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root {
+    color: #f4f1de;
+    background-color: #233d4d;
+    font-family:  "Ubuntu", sans-serif;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+}
+
+
+.create-container {
+    background-color: #233d4d;
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+
+.navbar {
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.navbar .logo-land-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(60px, 10vw, 75px);
+    color: #fe7f2d;
+    gap: 10px;
+    user-select: none;
+}
+
+
+.user-name {
+    color: #fe7f2d;
+    display: flex;
+    place-items: center;
+    font-size: clamp(10px, 3.5vw, 30px);
+    height: auto;
+    padding: 10px 15px;
+    width: auto;
+    gap: 10px;
+    background-color: #3A5C6F;
+    border: 5px solid #152a36;
+    transition: 0.4s all ease;
+    position: relative;
+    border-radius: 8px;
+}
+
+.main-form {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+}
+
+.tekst-box {
+    flex: 1;
+    background: #1e2a38;
+    padding: 20px;
+    margin-right: 80px;
+    border-radius: 30px;
+    border: 8px ridge #fe7f2d;
+    min-height: 650px;
+    display: flex;
+}
+
+.tekst-box textarea {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    outline: none;
+    resize: none;
+}
+
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.title-input {
+    width: 250px;
+    height: 50px;
+    padding: 10px;
+    font-size: 28px;
+    border-radius: 10px;
+    border: 2px solid black;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.color-picker {
+    display: flex;
+    gap: 20px;
+}
+
+.color-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid black;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.selected {
+    box-shadow: 0 0 10px white;
+}
+
+.category-select {
+    width: 250px;
+    padding: 20px;
+    font-size: 22px;
+    border-radius: 10px;
+    border: 2px solid black;
+    border: none;
+
+
+}
+
+.submit-button {
+    margin-top: 250px;
+    width: 250px;
+    padding: 20px 30px;
+    font-size: 32px;
+    border-radius: 15px;
+    background: black;
+    color: white;
+    cursor: pointer;
+    border: 2px solid white;
+    transition: 0.3s;
+}
+
+.submit-button:hover {
+    background: #fe7f2d;
+}
