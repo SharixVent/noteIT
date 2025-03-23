@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faNoteSticky } from '@fortawesome/free-solid-svg-icons'
 import './Create.css';
 
 function Create() {
@@ -21,7 +23,10 @@ function Create() {
     return (
         <div className="create-container">
             <div className="navbar">
-                <div className="logo">noteIT</div>
+                    <div className="logo-land-page">
+                        <FontAwesomeIcon className='ikona-land' icon={faNoteSticky} /> 
+                        <p>noteIT</p>
+                    </div>
                 <div className="user-name">KAMIL123</div>
             </div>
             
