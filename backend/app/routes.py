@@ -1,6 +1,6 @@
 from flask import request, jsonify
 from app import db
-from app.models import User, Note
+from app.models import User, Notes
 
 def init_routes(app):
     @app.route('/')
@@ -78,7 +78,7 @@ def init_routes(app):
         if not user_id or not title or not description:
             return jsonify({"error": "Missing required fields"}), 400
 
-        new_note = Note(user_id=user_id, title=title, description=description, color=color, category=category)
+        new_note = Notes(user_id=user_id, title=title, description=description, color=color, category=category)
         db.session.add(new_note)
         db.session.commit()
 
@@ -91,7 +91,7 @@ def init_routes(app):
         if not note_id:
             return jsonify({"error": "Note ID is required"}), 400
 
-        note = Note.query.get(note_id)
+        note = Notes.query.get(note_id)
 
         if not note:
             return jsonify({"error": "Note not found"}), 404
@@ -118,7 +118,7 @@ def init_routes(app):
         except ValueError:
             return jsonify({"error": "Invalid Note ID"}), 400
 
-        note = Note.query.get(note_id)  # Pobranie notatki
+        note = Notes.query.get(note_id)  # Pobranie notatki
 
         if not note:
             return jsonify({"error": "Note not found"}), 404
@@ -135,7 +135,7 @@ def init_routes(app):
         if not note_id:
             return jsonify({"error": "Note ID is required"}), 400
 
-        note = Note.query.get(note_id)
+        note = Notes.query.get(note_id)
         if not note:
             return jsonify({"error": "Note not found"}), 404
 
@@ -152,7 +152,6 @@ def init_routes(app):
         db.session.commit()
         return jsonify({"message": "Note updated successfully"})
     
-    # TODO - update_note
         
     @app.route('/get_user_notes', methods=['GET'])
     def get_user_notes():
@@ -166,7 +165,7 @@ def init_routes(app):
         if not user:
             return jsonify({"error": "User not found"}), 404
 
-        notes = Note.query.filter_by(user_id=user_id).all()
+        notes = Notes.query.filter_by(user_id=user_id).all()
 
         return jsonify([{
             "id": note.note_id,

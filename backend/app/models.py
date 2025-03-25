@@ -3,7 +3,6 @@ from datetime import datetime
 from sqlalchemy.orm import relationship
 
 
-
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)  # Unikalny identyfikator
     username = db.Column(db.String(80), unique=True, nullable=False)  # Nazwa użytkownika
