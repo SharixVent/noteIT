@@ -86,7 +86,7 @@ def init_routes(app):
 
     @app.route('/get_note', methods=['GET'])
     def get_note():
-        note_id = request.args.get('id')
+        note_id = request.args.get('note_id')
 
         if not note_id:
             return jsonify({"error": "Note ID is required"}), 400
@@ -97,7 +97,7 @@ def init_routes(app):
             return jsonify({"error": "Note not found"}), 404
 
         return jsonify({
-            "id": note.id,
+            "id": note.note_id,
             "user_id": note.user_id,
             "title": note.title,
             "description": note.description,
@@ -105,8 +105,53 @@ def init_routes(app):
             "category": note.category,
             "init_date": note.init_date
         })
-        
-    # TODO - update_note, delete_note
+    
+    @app.route('/delete_note', methods=['DELETE'])
+    def delete_note():
+        note_id = request.args.get('note_id')
+
+        if not note_id:
+            return jsonify({"error": "Note ID is required"}), 400
+    
+        try:
+            note_id = int(note_id)  # Konwersja na int
+        except ValueError:
+            return jsonify({"error": "Invalid Note ID"}), 400
+
+        note = Note.query.get(note_id)  # Pobranie notatki
+
+        if not note:
+            return jsonify({"error": "Note not found"}), 404
+
+        db.session.delete(note)  # Usunięcie notatki
+        db.session.commit()  # Zapisanie zmian
+
+        return jsonify({"message": "Note deleted successfully"})        
+
+    @app.route('/update_note', methods=['PUT'])
+    def update_user():
+        note_id = request.args.get('note_id')
+
+        if not note_id:
+            return jsonify({"error": "Note ID is required"}), 400
+
+        note = Note.query.get(note_id)
+        if not note:
+            return jsonify({"error": "Note not found"}), 404
+
+        data = request.json
+        if 'title' in data:
+            note.title = data['title']
+        if 'description' in data:
+            note.description = data['description']
+        if 'color' in data:
+            note.color = data['color']
+        if 'category' in data:
+            note.category = data['category']
+
+        db.session.commit()
+        return jsonify({"message": "Note updated successfully"})
+    
         
     @app.route('/get_user_notes', methods=['GET'])
     def get_user_notes():
