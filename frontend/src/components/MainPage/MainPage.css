@@ -1,0 +1,111 @@
+.navbar-mp {
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-mp .logo-mp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d1f2eb;
+    font-size: clamp(60px, 10vw, 75px);
+    gap: 10px;
+    margin-left: 10vw;
+    width: 100px;   
+    height: 100px;
+    user-select: none;
+}
+
+.navbar-mp .profile-mp {
+    width: auto;
+    gap: 10px;
+    border-radius: 50px;
+    padding: 0 15px;
+    font-size: clamp(10px, 3.5vw, 30px);
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    color: #d1f2eb;
+    background: #50c878;
+    border: 5px solid #0b6e4f;
+    user-select: none;
+
+}
+
+.main-mp {
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    gap: 2vw;
+    margin-top: 1vh;
+}
+
+.main-mp .categories-mp {
+    height: 80vh;
+    width: 23vw;
+    border: 5px solid #0b6e4f;
+    background-color: #50c878;
+    border-radius: 50px;
+    margin-left: 0.5vw;
+    color: #0b6e4f;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+} 
+
+.main-mp .categories-mp > span {
+    margin: 30px;
+    font-size: 60px;
+    align-self: center;
+}
+
+.main-mp .categories-mp .container-cat-mp {
+    display: grid;
+    grid-template: "a b";
+    justify-content: flex-start;
+    align-items: center;
+    margin: 30px;
+    font-size: 30px;
+    gap: 15px;
+    
+}
+
+.main-mp .categories-mp .container-cat-mp > input[type='checkbox'] {
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid black;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+}
+
+.main-mp .categories-mp .container-cat-mp > input[type='checkbox']::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em #0b6e4f;    
+}
+
+.main-mp .categories-mp .container-cat-mp > input[type="checkbox"]:checked::before {
+    transform: scale(1);
+  }
+
+.main-mp .container-mp {
+    height: 80vh;
+    width: 72vw;
+    border: 5px solid #0b6e4f;
+    background-color: #50c878;
+    border-radius: 50px;
+    color: #d1f2eb;
+}
