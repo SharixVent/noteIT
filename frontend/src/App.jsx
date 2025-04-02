@@ -14,6 +14,7 @@ function App() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/mainpage" element={<MainPage />} />
                 <Route path="/create" element={<Create />} />
+                <Route path='profile' element={<MainPage/>}/>
             </Routes>
         </Router>
     );
