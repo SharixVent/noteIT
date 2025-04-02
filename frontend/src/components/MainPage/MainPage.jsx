@@ -1,10 +1,17 @@
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faNoteSticky, faUser} from '@fortawesome/free-solid-svg-icons'
 import './MainPage.css';
 
 function MainPage()  {
     const navigate = useNavigate();
+
+    const [checked, setChecked] = useState(true);
+
+    function toggle() {
+        setChecked(prev => !prev);
+    }
 
     return <>
         <div className="navbar-mp">
@@ -18,13 +25,13 @@ function MainPage()  {
             <div className="categories-mp">
                 <span>Categories</span>
                 <div className="container-cat-mp">
-                    <input type="checkbox" name="" id=""></input>
+                    <input type="checkbox" name="" id="" checked={checked} onChange={toggle}></input>
                     <label htmlFor="">All</label>
-                    <input type="checkbox" name="" id=""></input>
+                    <input type="checkbox" name="" id="" checked={checked}></input>
                     <label htmlFor="">Studies</label>
-                    <input type="checkbox" name="" id=""></input>
+                    <input type="checkbox" name="" id="" checked={checked}></input>
                     <label htmlFor="">Work</label>
-                    <input type="checkbox" name="" id=""></input>
+                    <input type="checkbox" name="" id="" checked={checked}></input>
                     <label htmlFor="">Others</label>
                 </div>
                 
