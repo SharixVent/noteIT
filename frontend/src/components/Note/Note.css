@@ -1,0 +1,51 @@
+.note {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.note:hover {
+    transform: scale(1.02);
+}
+
+.note-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.note-description {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.note-category {
+    font-size: 12px;
+    color: #555;
+    font-style: italic;
+}
+
+.add-note-mp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #007bff;
+    color: white;
+    border-radius: 8px;
+    padding: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-note-mp:hover {
+    background-color: #0056b3;
+}
+
+.add-note-mp p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
