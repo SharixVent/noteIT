@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 :root {
-    color: #f4f1de;
-    background-color: #233d4d;
+    background-color: #013220;
     font-family:  "Ubuntu", sans-serif;
     font-style: normal;
     margin: 0;
@@ -25,14 +24,14 @@
     align-items: center;
     justify-content: center;
     font-size: clamp(60px, 10vw, 75px);
-    color: #fe7f2d;
+    color: #d1f2eb;
     gap: 10px;
     user-select: none;
 }
 
 
 .navbar-home button {
-    color: #fe7f2d;
+    color: #d1f2eb;
     display: flex;
     place-items: center;
     font-size: clamp(10px, 3.5vw, 30px);
@@ -40,19 +39,20 @@
     padding: 10px 15px;
     width: auto;
     gap: 10px;
-    background-color: #3A5C6F;
-    border: 5px solid #152a36;
+    background-color: #50c878;
+    border: 5px solid #0b6e4f;
     transition: 0.4s all ease;
     position: relative;
-    border-radius: 8px;
-    
+    border-radius: 50px;  
+    cursor: pointer;
 }
 
 
 .navbar-home button:hover {
-    background-color: #4F7A8F;
+    background-color: #5ec982;
     letter-spacing: 2.5px;
-    border-radius: 12px;
+    
+    border-radius: 30px; 
 }
 
 /* ================  .land-page  ================ */
@@ -72,8 +72,8 @@
     border-radius: 30px;
     height: 80vh;
     position: relative;
-    border: 8px ridge #fe7f2d;
-    background-color: #4F7A8F;
+    border: 8px ridge #0b6e4f;
+    background-color: #d1f2eb;
     overflow: hidden;
 }
 
@@ -176,11 +176,11 @@
     user-select: none;
     margin: 5px;
     font-weight: 500;
-    background: radial-gradient(circle, #ffffff, #868681);
+    background: radial-gradient(circle, #d1f2eb, #013220);
     background-clip: text;
     color: transparent;
     animation: front 8s linear infinite;
-    background-size: 200% 200%;
+    background-size: 300% 300%;
 }
 
 @keyframes front {
@@ -197,11 +197,11 @@
 }
 
 .land-page .container-land-page .categories-land-page {
-    width: 350px;
-    height: 350px;
-    background-color: #3A5C6F;
+    width: 20vw;
+    height: 27vh;
+    background-color: #013220;
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, 50%);
     display: flex;
@@ -215,7 +215,7 @@
 }
 
 .land-page .container-land-page .categories-land-page > span {
-    color: aliceblue;
+    color: #d1f2eb;
     font-size: 20px;
     user-select: none;
 }

@@ -1,0 +1,59 @@
+.note {
+    position: relative;
+    z-index: 15;
+    width: 180px;
+    height: 180px;
+    background-color: aliceblue;
+    clip-path: polygon(0 0, 80% 0, 100% 20%, 100% 100%, 0 100%);
+    display: flex;
+    justify-content: center;
+    color: #000000;
+    user-select: none;
+}
+
+.note > h3 {
+    display: flex;
+    align-items: center;
+    line-height: 1.5;
+    font-size: 25px;
+    letter-spacing: 1px;
+    user-select: none;
+    margin: 5px;
+    font-weight: 600;
+}
+
+.note::after {
+    content:"";
+    width: 40px;
+    height: 45px;
+    position: absolute;
+    top: -10px;
+    right: -5px;
+    background-color: rgb(245, 242, 242);
+    border: 1.5px solid black;
+    box-shadow: 8px 5px 10px black;
+}
+
+.note:hover {
+    transform: scale(1.02);
+}
+
+.note-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.note-description {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.note-category {
+    position: absolute;
+    bottom: 10px;
+    left: 30%;
+    font-size: 24px;
+    color: #555;
+    font-style: italic;
+}
