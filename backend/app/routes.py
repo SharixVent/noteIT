@@ -156,6 +156,7 @@ def init_routes(app):
     @app.route('/get_user_notes', methods=['GET'])
     def get_user_notes():
         user_id = request.args.get('user_id')
+        category = request.args.get('category')  # Pobierz opcjonalny parametr category
 
         if not user_id:
             return jsonify({"error": "User ID is required"}), 400
@@ -165,7 +166,10 @@ def init_routes(app):
         if not user:
             return jsonify({"error": "User not found"}), 404
 
-        notes = Note.query.filter_by(user_id=user_id).all()
+        if category:
+            notes = Note.query.filter_by(user_id=user_id, category=category).all()
+        else:
+            notes = Note.query.filter_by(user_id=user_id).all()
 
         return jsonify([{
             "id": note.note_id,
