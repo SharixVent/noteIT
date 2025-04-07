@@ -7,14 +7,36 @@ import Note from '../Note/Note';
 import './MainPage.css';
 
 function MainPage() {
+                             //studies !!!!!!!
+    const categories = ["All", "Studies", "Work", "Others"];
+    const [selectedCategory, setSelectedCategory] = useState("All");
     const navigate = useNavigate();
     const [notes, setNotes] = useState([]);
 
+    const handleSelect = (category) => {
+        setSelectedCategory(category);
+    };
+
+    const [loading, setLoading] = useState(false);
+
+    const fetchNotes = async (category) => {
+    try {
+        setLoading(true);
+        const notesData = await api.note.getUserNotes(1, category);
+        setNotes(notesData || []);
+    } catch (err) {
+        console.error("Failed to fetch notes:", err);
+    } finally {
+        setLoading(false);
+    }
+    };
+    
     useEffect(() => {
-        // Fetch notes for the test user with ID 1
-        api.note.getUserNotes(1)
-            .then((fetchedNotes) => setNotes(fetchedNotes))
-            .catch((error) => console.error('Error fetching notes:', error));
+        fetchNotes(selectedCategory); // run when category changes
+    }, [selectedCategory]);
+      
+    useEffect(() => {
+        fetchNotes(selectedCategory); // run once on mount
     }, []);
 
     const handleProfileClick = () => {
@@ -23,11 +45,10 @@ function MainPage() {
     };
 
     const handleAddNoteClick = () => {
-        // Navigate to the add note page
-        // TODO: Add add note functionality it requires a json that look like this:
-        // {"user_id": 1, "title": "My Second Note", "description": "This is the description of the note.", "color": "blue", "category": "Study"}
         navigate('/create');
     };
+
+    
 
     return (
         <>
@@ -43,20 +64,25 @@ function MainPage() {
             </div>
             <div className="main-mp">
                 <div className="container-cat-button-mp">
-                    <div className="categories-mp">
-                        <span>Categories</span>
-                        <div className="container-cat-mp">
-                            <input type="checkbox" name="" id="" />
-                            <label htmlFor="">All</label>
-                            <input type="checkbox" name="" id="" />
-                            <label htmlFor="">Studies</label>
-                            <input type="checkbox" name="" id="" />
-                            <label htmlFor="">Work</label>
-                            <input type="checkbox" name="" id="" />
-                            <label htmlFor="">Others</label>
-                        </div>
-                        
-                    </div>
+                <div className="categories-mp">
+                <span>Categories</span>
+                <div className="container-cat-mp">
+                {categories.map((cat) => {
+                    const id = `category-${cat.toLowerCase()}`;
+                    return (
+                    <React.Fragment key={cat}>
+                        <input
+                        type="checkbox"
+                        id={id}
+                        checked={selectedCategory === cat}
+                        onChange={() => handleSelect(cat)}
+                        />
+                        <label htmlFor={id}>{cat}</label>
+                    </React.Fragment>
+                    );
+                })}
+                </div>
+            </div>
 
                 <div className="cont-add-mp">
                     <div className="add-note-mp" onClick={handleAddNoteClick}>

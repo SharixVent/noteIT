@@ -70,9 +70,9 @@ function Create() {
                         onChange={(e) => setKategoria(e.target.value)}
                     >
                         <option value="">Wybierz kategorię</option>
-                        <option value="Praca">Praca</option>
-                        <option value="Studia">Studia</option>
-                        <option value="Inne">Inne</option>
+                        <option value="Work">Work</option>
+                        <option value="Studies">Studies</option>
+                        <option value="Others">Others</option>
                     </select>
 
                     <button type="submit" className="submit-button">Dodaj</button>

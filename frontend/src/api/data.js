@@ -97,8 +97,9 @@ const noteApi = {
         return response.json();
     },
 
-    getUserNotes: async (userId) => {
-        const response = await fetch(`${API_BASE_URL}/get_user_notes?user_id=${userId}`);
+    getUserNotes: async (userId, category) => {
+        if(category == "All") category = "";
+        const response = await fetch(`${API_BASE_URL}/get_user_notes?user_id=${userId}&category=${category}`);
 
         if (!response.ok) {
             throw new Error(`Error fetching user notes: ${response.statusText}`);
