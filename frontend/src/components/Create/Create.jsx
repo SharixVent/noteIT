@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faNoteSticky } from '@fortawesome/free-solid-svg-icons'
 import './Create.css';
+import api from '../../api/data'; 
 
 function Create() {
     const navigate = useNavigate();
@@ -17,8 +18,11 @@ function Create() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log({ tytul, tekst, kolor, kategoria });
+        api.note.addNote(1, tytul, tekst, kolor, kategoria)
+        navigate('/mainpage');
     };
+
+
 
     return (
         <div className="create-container">

@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faNoteSticky, faUser} from '@fortawesome/free-solid-svg-icons'
+import { faNoteSticky, faUser} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faNoteSticky, faUser } from '@fortawesome/free-solid-svg-icons';
 import api from '../../api/data'; 
 import Note from '../Note/Note';
 import './MainPage.css';
@@ -29,7 +26,7 @@ function MainPage() {
         // Navigate to the add note page
         // TODO: Add add note functionality it requires a json that look like this:
         // {"user_id": 1, "title": "My Second Note", "description": "This is the description of the note.", "color": "blue", "category": "Study"}
-        navigate('/add-note');
+        navigate('/create');
     };
 
     return (
@@ -45,38 +42,44 @@ function MainPage() {
                 </div>
             </div>
             <div className="main-mp">
-                <div className="categories-mp">
-                    <span>Categories</span>
-                    <div className="container-cat-mp">
-                        <input type="checkbox" name="" id="" />
-                        <label htmlFor="">All</label>
-                        <input type="checkbox" name="" id="" />
-                        <label htmlFor="">Studies</label>
-                        <input type="checkbox" name="" id="" />
-                        <label htmlFor="">Work</label>
-                        <input type="checkbox" name="" id="" />
-                        <label htmlFor="">Others</label>
+                <div className="container-cat-button-mp">
+                    <div className="categories-mp">
+                        <span>Categories</span>
+                        <div className="container-cat-mp">
+                            <input type="checkbox" name="" id="" />
+                            <label htmlFor="">All</label>
+                            <input type="checkbox" name="" id="" />
+                            <label htmlFor="">Studies</label>
+                            <input type="checkbox" name="" id="" />
+                            <label htmlFor="">Work</label>
+                            <input type="checkbox" name="" id="" />
+                            <label htmlFor="">Others</label>
+                        </div>
+                        
+                    </div>
+
+                <div className="cont-add-mp">
+                    <div className="add-note-mp" onClick={handleAddNoteClick}>
+                        <p>Create Note</p>
                     </div>
                 </div>
+                </div>
+                
+                
                 <div className="container-mp">
                     <div className="notes-container-mp">
-                        {/* Render notes here */}
                         {notes.map((note) => (
                             <Note
                                 key={note.id}
                                 title={note.title}
-                                description={note.description}
                                 color={note.color}
                                 category={note.category}
                             />
                         ))}
                     </div>
-                    <div className="cont-add-mp">
-                        <div className="add-note-mp" onClick={handleAddNoteClick}>
-                            <p>+ Add Note</p>
-                        </div>
-                    </div>
+                    
                 </div>
+                
             </div>
         </>
     );
