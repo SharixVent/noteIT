@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+.notes-preview-container-nprev {
+    background-color: #013220;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.notes-preview-navbar-nprev {
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notes-preview-logo-nprev {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(60px, 10vw, 75px);
+    color: #d1f2eb;
+    gap: 10px;
+    user-select: none;
+    margin-left: 10vw;
+}
+
+.notes-preview-icon-nprev {
+    font-size: 1em; 
+}
+
+.notes-preview-user-nprev {
+    color: #d1f2eb;
+    display: flex;
+    place-items: center;
+    font-size: clamp(10px, 3.5vw, 30px);
+    height: auto;
+    padding: 10px 15px;
+    width: auto;
+    gap: 10px;
+    background-color: #50c878;
+    border: 5px solid #0b6e4f;
+    transition: 0.4s all ease;
+    position: relative;
+    border-radius: 8px;
+    margin-right: 5vw;
+}
+
+.notes-preview-grid-nprev {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 40px 20px;
+    width: 90%;
+    justify-items: center;
+}
+
+.notes-preview-card-nprev {
+    background-color: #50c878;
+    color: #d1f2eb;
+    width: 100%;
+    min-height: 250px;
+    padding: 20px;
+    border-radius: 30px;
+    border: 8px ridge #0b6e4f;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 0.3s all ease;
+    overflow-wrap: break-word;
+    cursor: pointer;
+}
+
+.notes-preview-card-nprev:hover {
+    background-color: #66ffb2;
+    transform: translateY(-5px);
+}
+
+.notes-preview-title-nprev {
+    font-size: 28px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.notes-preview-description-nprev {
+    font-size: 20px;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.notes-preview-category-nprev {
+    margin-top: 15px;
+    font-size: 18px;
+    text-align: center;
+    background-color: #0b6e4f;
+    padding: 8px 12px;
+    border-radius: 15px;
+    display: inline-block;
+    align-self: center;
+}
+
+.notes-preview-loading-nprev {
+    margin-top: 50px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.notes-preview-empty-nprev {
+    margin-top: 50px;
+    font-size: 24px;
+    text-align: center;
+}

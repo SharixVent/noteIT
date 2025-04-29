@@ -31,7 +31,7 @@ function Create() {
                         <FontAwesomeIcon className='ikona-land' icon={faNoteSticky} /> 
                         <p>noteIT</p>
                     </div>
-                <div className="user-name">KAMIL123</div>
+                <div className="user-name">example@gmail.com</div>
             </div>
             
             <form className="main-form" onSubmit={handleSubmit}>
@@ -44,14 +44,13 @@ function Create() {
                 </div>
 
                 <div className="right-panel">
-                    <input 
-                        className="title-input" 
-                        style={{ backgroundColor: kolor }}
-                        type="text" 
-                        placeholder="Tytuł notatki" 
-                        value={tytul}
-                        onChange={(e) => setTytul(e.target.value)}
-                    />
+                <textarea 
+                    className="title-input" 
+                    style={{ backgroundColor: kolor }}
+                    placeholder="Title" 
+                    value={tytul}
+                    onChange={(e) => setTytul(e.target.value)}
+                />
 
                     <div className="color-picker">
                         {['#ff0000', '#00ff00', '#ffff00'].map((color) => (

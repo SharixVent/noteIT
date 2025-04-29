@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faNoteSticky } from '@fortawesome/free-solid-svg-icons';
 import './Register.css'; // zmieniono z Login.css na Register.css
 
 function Register() {
@@ -16,7 +16,7 @@ function Register() {
 
                     <div className="register-container">
                         <div className="register-logo">
-                            <FontAwesomeIcon className='ikona-register' icon={faUserPlus} /> 
+                            <FontAwesomeIcon className='ikona-register' icon={faNoteSticky} /> 
                             <p>noteIT</p>
                         </div>
                         <form action="" className='register-form'>

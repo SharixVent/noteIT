@@ -9,6 +9,7 @@
     justify-content: center;
     color: #000000;
     user-select: none;
+    text-align: center;
 }
 
 .note > h3 {
