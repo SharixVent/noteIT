@@ -25,7 +25,7 @@
     align-items: center;
     justify-content: center;
     font-size: clamp(60px, 10vw, 75px);
-    color: #fe7f2d;
+    color: #d1f2eb;
     gap: 10px;
     user-select: none;
     margin-left: 10vw;
@@ -33,7 +33,7 @@
 
 
 .user-name {
-    color: #fe7f2d;
+    color: #d1f2eb;
     display: flex;
     place-items: center;
     font-size: clamp(10px, 3.5vw, 30px);
@@ -41,8 +41,8 @@
     padding: 10px 15px;
     width: auto;
     gap: 10px;
-    background-color: #3A5C6F;
-    border: 5px solid #152a36;
+    background-color: #50c878;
+    border: 5px solid #0b6e4f;
     transition: 0.4s all ease;
     position: relative;
     border-radius: 8px;
@@ -64,6 +64,7 @@
     border: 8px ridge #0b6e4f;
     min-height: 650px;
     display: flex;
+    
 }
 
 .tekst-box textarea {
@@ -71,7 +72,7 @@
     height: 100%;
     background: transparent;
     border: none;
-    color: white;
+    color: #d1f2eb;
     font-size: 24px;
     outline: none;
     resize: none;
@@ -80,20 +81,22 @@
 .right-panel {
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
+    margin-top: 10px;
     gap: 10px;
     align-items: center;
 }
 
 .title-input {
     width: 250px;
-    height: 50px;
+    height: 200px;
     padding: 10px;
     font-size: 28px;
     border-radius: 10px;
     border: 2px solid black;
     text-align: center;
     margin-bottom: 20px;
+    resize: none;
+    padding-top:30px;
 }
 
 .color-picker {
@@ -111,7 +114,7 @@
 }
 
 .selected {
-    box-shadow: 0 0 10px white;
+    box-shadow: 0 0 10px #d1f2eb;
 }
 
 .category-select {
@@ -121,23 +124,21 @@
     border-radius: 10px;
     border: 2px solid black;
     border: none;
-
-
 }
 
 .submit-button {
-    margin-top: 250px;
+    margin-top: 50px;
     width: 250px;
     padding: 20px 30px;
     font-size: 32px;
     border-radius: 15px;
-    background: black;
+    background: #0b6e4f;
     color: white;
     cursor: pointer;
-    border: 2px solid white;
+    border: 2px solid #d1f2eb;
     transition: 0.3s;
 }
 
 .submit-button:hover {
-    background: #fe7f2d;
+    background: #50c878;
 }

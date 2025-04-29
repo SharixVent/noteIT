@@ -119,7 +119,6 @@
     display:flex;    
     overflow-y: scroll;
     overflow-x:hidden;
-    
 }
 
 .container-mp::-webkit-scrollbar {
