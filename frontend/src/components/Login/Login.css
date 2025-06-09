@@ -210,6 +210,14 @@
     height: 3vh;
 }
 
+.login-main .login-container .login-form > input[type='password'] {
+    display: flex;
+    padding-left: 5px;  
+    font-size: 20px;
+    width: 15vw;
+    height: 3vh;
+}
+
 .login-main .login-container .login-form > input[type='submit']{
     /* flex-direction: column; */
 }
@@ -232,3 +240,8 @@
     z-index: 5;
 }
 
+.login-error {
+    color: red;
+    margin-top: 8px;
+    font-size: 0.9em;
+}

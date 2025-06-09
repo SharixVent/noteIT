@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>components/MainPage/MainPage.jsx - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#App">App</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#Create">Create</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#Login">Login</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#MainPage">MainPage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#Note">Note</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#NoteDetails">NoteDetails</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#NotesPreview">NotesPreview</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#Register">Register</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">components/MainPage/MainPage.jsx</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { faNoteSticky, faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import api from '../../api/data';
+import Note from '../Note/Note';
+import './MainPage.css';
+
+/**
+ * MainPage component – displays the main dashboard with user notes, category filters,
+ * navigation to profile, and note creation functionality.
+ *
+ * @component
+ * @returns {JSX.Element}
+ */
+function MainPage() {
+    const categories = ["All", "Studies", "Work", "Others"];
+
+    /** Currently selected note category. */
+    const [selectedCategory, setSelectedCategory] = useState('All');
+
+    const navigate = useNavigate();
+
+    /** Array of user notes fetched from API. */
+    const [notes, setNotes] = useState([]);
+
+    /** Indicates if notes are being fetched. */
+    const [loading, setLoading] = useState(false);
+
+    /**
+     * Handles selection of a category.
+     * @param {string} category - The selected category name.
+     */
+    const handleSelect = (category) => {
+        setSelectedCategory(category);
+    };
+
+    /**
+     * Fetches user notes from the API for a given category.
+     * @param {string} category - The category to filter notes by.
+     * @returns {Promise&lt;void>}
+     */
+    const fetchNotes = async (category) => {
+        try {
+            setLoading(true);
+            const notesData = await api.note.getUserNotes(1, category);
+            setNotes(notesData || []);
+        } catch (err) {
+            console.error("Failed to fetch notes:", err);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    // Fetch notes when the selected category changes
+    useEffect(() => {
+        fetchNotes(selectedCategory);
+    }, [selectedCategory]);
+
+    // Fetch notes on component mount
+    useEffect(() => {
+        fetchNotes(selectedCategory);
+    }, []);
+
+    /** Navigates the user to their profile page. */
+    const handleProfileClick = () => {
+        navigate('/profile');
+    };
+
+    /** Navigates the user to the create note page. */
+    const handleAddNoteClick = () => {
+        navigate('/create');
+    };
+
+    return (
+        &lt;>
+            &lt;div className="navbar-mp">
+                &lt;div className="logo-mp">
+                    &lt;FontAwesomeIcon className="ikona-land" icon={faNoteSticky} />
+                    &lt;p>noteIT&lt;/p>
+                &lt;/div>
+                &lt;div className="profile-mp" id="profile-mp" onClick={handleProfileClick}>
+                    &lt;FontAwesomeIcon icon={faUser} />
+                    example@email.com
+                &lt;/div>
+            &lt;/div>
+            &lt;div className="main-mp">
+                &lt;div className="container-cat-button-mp">
+                    &lt;div className="categories-mp">
+                        &lt;span>Categories&lt;/span>
+                        &lt;div className="container-cat-mp">
+                            {categories.map((cat) => {
+                                const id = `category-${cat.toLowerCase()}`;
+                                return (
+                                    &lt;React.Fragment key={cat}>
+                                        &lt;input
+                                            type="checkbox"
+                                            id={id}
+                                            checked={selectedCategory === cat}
+                                            onChange={() => handleSelect(cat)}
+                                        />
+                                        &lt;label htmlFor={id}>{cat}&lt;/label>
+                                    &lt;/React.Fragment>
+                                );
+                            })}
+                        &lt;/div>
+                    &lt;/div>
+
+                    &lt;div className="cont-add-mp">
+                        &lt;div className="add-note-mp" onClick={handleAddNoteClick}>
+                            &lt;p>Create Note&lt;/p>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+
+                &lt;div className="container-mp">
+                    &lt;div className="notes-container-mp">
+                        {notes.map((note) => (
+                            &lt;Note
+                                key={note.id}
+                                id={note.id}
+                                title={note.title}
+                                color={note.color}
+                                category={note.category}
+                            />
+                        ))}
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+        &lt;/>
+    );
+}
+
+export default MainPage;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Mon Jun 09 2025 20:20:40 GMT+0200 (czas środkowoeuropejski letni) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

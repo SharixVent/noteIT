@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>components/NotesPreview/NotesPreview.jsx - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#App">App</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#Create">Create</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#Login">Login</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#MainPage">MainPage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#Note">Note</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#NoteDetails">NoteDetails</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#NotesPreview">NotesPreview</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#Register">Register</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">components/NotesPreview/NotesPreview.jsx</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faNoteSticky } from '@fortawesome/free-solid-svg-icons';
+import './NotesPreview.css';
+import api from '../../api/data';
+
+/**
+ * NotesPreview component – displays a grid of all notes for the user.
+ * Fetches all user notes from the API and displays them in a styled layout.
+ *
+ * @component
+ * @returns {JSX.Element} A page with a list of all notes for preview purposes.
+ */
+function NotesPreview() {
+    /**
+     * List of user notes fetched from the API.
+     * @type {Array&lt;Object>}
+     */
+    const [notes, setNotes] = useState([]);
+
+    /**
+     * Whether the notes are still being loaded.
+     * @type {boolean}
+     */
+    const [loading, setLoading] = useState(true);
+
+    /**
+     * Fetches all notes for user ID 1 and updates state.
+     * Runs once when the component mounts.
+     * @returns {Promise&lt;void>}
+     */
+    useEffect(() => {
+        async function fetchNotes() {
+            try {
+                const fetchedNotes = await api.note.getUserNotes(1, "All");
+                setNotes(fetchedNotes);
+            } catch (error) {
+                console.error('Błąd ładowania notatek:', error);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        fetchNotes();
+    }, []);
+
+    return (
+        &lt;div className="notes-preview-container-nprev">
+            &lt;div className="notes-preview-navbar-nprev">
+                &lt;div className="notes-preview-logo-nprev">
+                    &lt;FontAwesomeIcon className="notes-preview-icon-nprev" icon={faNoteSticky} />
+                    &lt;p>noteIT&lt;/p>
+                &lt;/div>
+                &lt;div className="notes-preview-user-nprev">example@gmail.com&lt;/div>
+            &lt;/div>
+
+            {loading ? (
+                &lt;p className="notes-preview-loading-nprev">Ładowanie...&lt;/p>
+            ) : (
+                &lt;div className="notes-preview-grid-nprev">
+                    {notes.length === 0 ? (
+                        &lt;p className="notes-preview-empty-nprev">Brak notatek.&lt;/p>
+                    ) : (
+                        notes.map(note => (
+                            &lt;div
+                                key={note.id}
+                                className="notes-preview-card-nprev"
+                                style={{ backgroundColor: note.color }}
+                            >
+                                &lt;h3 className="notes-preview-title-nprev">{note.title}&lt;/h3>
+                                &lt;p className="notes-preview-description-nprev">{note.description}&lt;/p>
+                                &lt;span className="notes-preview-category-nprev">
+                                    {note.category || "Brak kategorii"}
+                                &lt;/span>
+                            &lt;/div>
+                        ))
+                    )}
+                &lt;/div>
+            )}
+        &lt;/div>
+    );
+}
+
+export default NotesPreview;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Mon Jun 09 2025 20:20:40 GMT+0200 (czas środkowoeuropejski letni) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

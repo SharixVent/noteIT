@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>components/Create/Create.jsx - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#App">App</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#Create">Create</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#Login">Login</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#MainPage">MainPage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#Note">Note</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#NoteDetails">NoteDetails</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#NotesPreview">NotesPreview</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#Register">Register</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">components/Create/Create.jsx</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faNoteSticky } from '@fortawesome/free-solid-svg-icons';
+import './Create.css';
+import api from '../../api/data';
+
+/**
+ * Create component – form for creating a new note with title, text, color, and category.
+ *
+ * @component
+ * @returns {JSX.Element}
+ */
+function Create() {
+    const navigate = useNavigate();
+    const [tytul, setTytul] = useState('');
+    const [tekst, setTekst] = useState('');
+    const [kolor, setKolor] = useState('#ffffff');
+    const [kategoria, setKategoria] = useState('');
+    const [error, setError] = useState('');
+
+    /**
+     * Handles color change for note title background.
+     * @param {string} newColor
+     */
+    const handleColorChange = (newColor) => {
+        setKolor(newColor);
+    };
+
+    /**
+     * Handles form submission, validates inputs and sends note to API.
+     * @param {React.FormEvent&lt;HTMLFormElement>} e
+     */
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (!tytul.trim() || !tekst.trim() || !kategoria.trim()) {
+            setError('Uzupełnij tytuł, treść i kategorię.');
+            return;
+        }
+
+        setError('');
+        api.note.addNote(1, tytul, tekst, kolor, kategoria);
+        navigate('/mainpage');
+    };
+
+    return (
+        &lt;div className="create-container">
+            &lt;div className="navbar-create">
+                &lt;div className="logo-land-page-create">
+                    &lt;FontAwesomeIcon className='ikona-land' icon={faNoteSticky} /> 
+                    &lt;p>noteIT&lt;/p>
+                &lt;/div>
+                &lt;div className="user-name">example@gmail.com&lt;/div>
+            &lt;/div>
+            
+            &lt;form className="main-form" onSubmit={handleSubmit}>
+                &lt;div className="tekst-box">
+                    &lt;textarea 
+                        placeholder="Wpisz notatkę..."
+                        value={tekst}
+                        onChange={(e) => setTekst(e.target.value)}
+                    >&lt;/textarea>
+                &lt;/div>
+
+                &lt;div className="right-panel">
+                    &lt;textarea 
+                        className="title-input" 
+                        style={{ backgroundColor: kolor }}
+                        placeholder="Title" 
+                        value={tytul}
+                        onChange={(e) => setTytul(e.target.value)}
+                    />
+
+                    &lt;div className="color-picker">
+                        {['#ff0000', '#00ff00', '#ffff00'].map((color) => (
+                            &lt;div 
+                                key={color} 
+                                className={`color-circle ${kolor === color ? 'selected' : ''}`} 
+                                style={{ backgroundColor: color }}
+                                onClick={() => handleColorChange(color)}
+                            >&lt;/div>
+                        ))}
+                    &lt;/div>
+
+                    &lt;select 
+                        className="category-select" 
+                        value={kategoria}
+                        onChange={(e) => setKategoria(e.target.value)}
+                    >
+                        &lt;option value="">Wybierz kategorię&lt;/option>
+                        &lt;option value="Work">Work&lt;/option>
+                        &lt;option value="Studies">Studies&lt;/option>
+                        &lt;option value="Others">Others&lt;/option>
+                    &lt;/select>
+
+                    {error &amp;&amp; &lt;p className="form-error">{error}&lt;/p>}
+
+                    &lt;button type="submit" className="submit-button">Dodaj&lt;/button>
+                &lt;/div>
+            &lt;/form>
+        &lt;/div>
+    );
+}
+
+export default Create;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Mon Jun 09 2025 20:20:40 GMT+0200 (czas środkowoeuropejski letni) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
