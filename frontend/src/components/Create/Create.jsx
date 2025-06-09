@@ -1,36 +1,56 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faNoteSticky } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faNoteSticky } from '@fortawesome/free-solid-svg-icons';
 import './Create.css';
-import api from '../../api/data'; 
+import api from '../../api/data';
 
+/**
+ * Create component – form for creating a new note with title, text, color, and category.
+ *
+ * @component
+ * @returns {JSX.Element}
+ */
 function Create() {
     const navigate = useNavigate();
     const [tytul, setTytul] = useState('');
     const [tekst, setTekst] = useState('');
     const [kolor, setKolor] = useState('#ffffff');
     const [kategoria, setKategoria] = useState('');
+    const [error, setError] = useState('');
 
+    /**
+     * Handles color change for note title background.
+     * @param {string} newColor
+     */
     const handleColorChange = (newColor) => {
         setKolor(newColor);
     };
 
+    /**
+     * Handles form submission, validates inputs and sends note to API.
+     * @param {React.FormEvent<HTMLFormElement>} e
+     */
     const handleSubmit = (e) => {
         e.preventDefault();
-        api.note.addNote(1, tytul, tekst, kolor, kategoria)
+
+        if (!tytul.trim() || !tekst.trim() || !kategoria.trim()) {
+            setError('Uzupełnij tytuł, treść i kategorię.');
+            return;
+        }
+
+        setError('');
+        api.note.addNote(1, tytul, tekst, kolor, kategoria);
         navigate('/mainpage');
     };
-
-
 
     return (
         <div className="create-container">
             <div className="navbar-create">
-                    <div className="logo-land-page-create">
-                        <FontAwesomeIcon className='ikona-land' icon={faNoteSticky} /> 
-                        <p>noteIT</p>
-                    </div>
+                <div className="logo-land-page-create">
+                    <FontAwesomeIcon className='ikona-land' icon={faNoteSticky} /> 
+                    <p>noteIT</p>
+                </div>
                 <div className="user-name">example@gmail.com</div>
             </div>
             
@@ -44,13 +64,13 @@ function Create() {
                 </div>
 
                 <div className="right-panel">
-                <textarea 
-                    className="title-input" 
-                    style={{ backgroundColor: kolor }}
-                    placeholder="Title" 
-                    value={tytul}
-                    onChange={(e) => setTytul(e.target.value)}
-                />
+                    <textarea 
+                        className="title-input" 
+                        style={{ backgroundColor: kolor }}
+                        placeholder="Title" 
+                        value={tytul}
+                        onChange={(e) => setTytul(e.target.value)}
+                    />
 
                     <div className="color-picker">
                         {['#ff0000', '#00ff00', '#ffff00'].map((color) => (
@@ -73,6 +93,8 @@ function Create() {
                         <option value="Studies">Studies</option>
                         <option value="Others">Others</option>
                     </select>
+
+                    {error && <p className="form-error">{error}</p>}
 
                     <button type="submit" className="submit-button">Dodaj</button>
                 </div>

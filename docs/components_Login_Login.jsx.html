@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>components/Login/Login.jsx - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#App">App</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#Create">Create</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#Login">Login</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#MainPage">MainPage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#Note">Note</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#NoteDetails">NoteDetails</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#NotesPreview">NotesPreview</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#Register">Register</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">components/Login/Login.jsx</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faNoteSticky } from '@fortawesome/free-solid-svg-icons';
+import './Login.css';
+
+/**
+ * Login component – displays the login form with validation.
+ *
+ * @component
+ * @returns {JSX.Element} A styled login form with validation and user feedback.
+ */
+function Login() {
+    const [login, setLogin] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+
+    /**
+     * Handles form submission and validates inputs.
+     *
+     * @param {React.FormEvent&lt;HTMLFormElement>} e
+     */
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        // Simple validation
+        if (!login.trim() || !password.trim()) {
+            setError('Please fill in both login and password.');
+            return;
+        }
+
+        setError('');
+        // TODO: Add real authentication logic here
+        console.log('Logging in with:', { login, password });
+    };
+
+    return (
+        &lt;>
+            &lt;div className='login-main'>
+                &lt;div className="login-cork-board">    
+
+                    &lt;div className="login-left-book">
+                        &lt;div className="book">&lt;/div>
+                    &lt;/div>
+
+                    &lt;div className="login-container">
+                        &lt;div className="login-logo">
+                            &lt;FontAwesomeIcon className='ikona-login' icon={faNoteSticky} /> 
+                            &lt;p>noteIT&lt;/p>
+                        &lt;/div>
+
+                        &lt;form className='login-form' onSubmit={handleSubmit}>
+                            &lt;label>Login&lt;/label>
+                            &lt;input
+                                type="text"
+                                placeholder="Login .."
+                                value={login}
+                                onChange={(e) => setLogin(e.target.value)}
+                            />
+                            &lt;label>Password&lt;/label>
+                            &lt;input
+                                type="password"
+                                placeholder="Password .."
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                            {error &amp;&amp; &lt;p className="login-error">{error}&lt;/p>}
+                            &lt;input type="submit" value="Login" />
+                        &lt;/form>
+                    &lt;/div>
+
+                    &lt;div className="note-login">
+                        &lt;div className="login-note-pin">&lt;/div>
+                        &lt;div className="login-note-pinleg">&lt;/div>
+                        &lt;p>Never give your password to anyone!&lt;/p>
+                    &lt;/div>
+
+                    &lt;div className="note-login-shadow">&lt;/div>
+                &lt;/div>
+            &lt;/div>
+        &lt;/>
+    );
+}
+
+export default Login;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Mon Jun 09 2025 20:20:40 GMT+0200 (czas środkowoeuropejski letni) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

@@ -1,9 +1,22 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import api from '../../api/data'; // Twój api plik
+import api from '../../api/data';
+import './NotePreview.css';
 
+/**
+ * NoteDetails component – displays detailed information about a selected note.
+ * It fetches note data based on the note ID from the URL parameters and
+ * renders a styled preview with title, description, and category.
+ *
+ * @component
+ * @returns {JSX.Element} A preview of the selected note.
+ */
 function NoteDetails() {
-    const { noteId } = useParams();
+    const { noteId } = useParams(); // from URL
+
+    const navigate = useNavigate(); // programmatic navigation
+
+    /** State to store fetched note data. */
     const [note, setNote] = useState(null);
 
     useEffect(() => {
@@ -19,24 +32,28 @@ function NoteDetails() {
         fetchNote();
     }, [noteId]);
 
+    /** Navigates the user back to the main page. */
+    const handleBackClick = () => {
+        navigate('/mainpage');
+    };
+
     if (!note) {
-        return <p>Ładowanie...</p>;
+        return <p>Loading...</p>;
     }
 
     return (
-        <div style={{ padding: 20 }}>
-            <h1>{note.title}</h1>
-            <p>{note.description}</p>
-            <p><strong>Kategoria:</strong> {note.category}</p>
-            <div 
-                style={{
-                    width: 100,
-                    height: 100,
-                    backgroundColor: note.color,
-                    border: '2px solid black',
-                    marginTop: 20
-                }}
-            ></div>
+        <div className="note-preview-wrapper">
+            <div className="note-preview-container" style={{ backgroundColor: note.color }}>
+                <h1 className="note-title">{note.title}</h1>
+                <p className="note-description">{note.description}</p>
+                <p className="note-category-show">
+                    <strong>Kategoria:</strong> {note.category}
+                </p>
+            </div>
+
+            <button className="back-button" onClick={handleBackClick}>
+                Back to home page
+            </button>
         </div>
     );
 }
